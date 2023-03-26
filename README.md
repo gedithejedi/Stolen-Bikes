@@ -1,28 +1,65 @@
-# Create T3 App
+# Stolen Bike Index - Carly Coding Challenge
+![Stolen Bike Cases](./public/illustration.png)
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Context
 
-## What's next? How do I make an app with this?
+Stolen bikes are a typical problem in Munich. The Police want to be more efficient in resolving stolen bike cases. They decided to build a software that can automate their processes — the software that you're going to develop.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+This app needs to display the list of reported bike thefts based on the Bikeindex [API](https://bikeindex.org/documentation/api_v3).
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Product Requirements
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+As a police officer:
 
-## Learn More
+- [ ] I want to see a list of reported bike thefts for the Munich area.
+- [ ] I want to see the first 10 bike theft cases, with the ability to - paginate (10 cases per page).
+- [ ] I want to see a total number of bike theft cases.
+- [ ] For each reported bike theft I want to see:
+  - [ ] Case title
+  - [ ] Case description
+  - [ ] Date of the theft
+  - [ ] Date of when the case was reported
+  - [ ] Location of the theft
+  - [ ] Picture of the bike, if available
+- [ ] I want to filter reported bike thefts by partial case title.
+- [ ] I want to filter reported bike thefts by date range.
+- [ ] I want to see a loading state until the list is available.
+- [ ] I want to see an error state if the list is unavailable.
+- [ ] I want to see an empty state if there are no results.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Your Mission
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+Create the React application that satisfies all product and tech requirements.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+For that, you’ll need to make requests to a publicly-available [API](https://bikeindex.org/documentation/api_v3) to get JSON content and print it on view. 
 
-## How do I deploy this?
+The API is known to have some limitations. If you are not able to implement a particular requirement, please provide a description of what and why you could not implements.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+For the layout of each page you can take inspiration from these resources:
+
+- [BikeIndex](https://bikeindex.org/bikes?serial=&button=&location=Munich&distance=100&stolenness=proximity)
+- [BikeWise](https://bikewise.org)
+
+You can use any boilerplate/approach you prefer (nextjs, create react app, ...), but try to keep it simple. We encourage you to use your favorite tools and packages to build a solid React application.
+
+You can assume that you do not have to support legacy browsers. Feel free to use modern features such as **fetch** or **flexbox**.
+
+Host the website on the service of your choice (zeit, Heroku, AWS, GCloud, ...)
+
+## Tech Requirements
+
+- React
+- Tests: Jest
+- Code Linter
+- Typescript 
+- CSSinJS is a plus: styled-components, styled-system, ...
+
+## Instructions
+
+- Fork this repo
+- The challenge is on!
+- Build a performant, clean and well-structured solution
+- Commit early and often. We want to be able to check your progress
+- Make the app public. Deploy it using the service of your choice
+- Create a pull request
+- Please complete your working solution within 7 days of receiving this challenge, and be sure to notify us when it is ready for review.
