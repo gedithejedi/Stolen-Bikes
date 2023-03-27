@@ -13,20 +13,20 @@ This app needs to display the list of reported bike thefts based on the Bikeinde
 As a police officer:
 
 - [x] I want to see a list of reported bike thefts for the Munich area.
-- [ ] I want to see the first 10 bike theft cases, with the ability to - paginate (10 cases per page).
-- [ ] I want to see a total number of bike theft cases.
-- [ ] For each reported bike theft I want to see:
+- [x] I want to see the first 10 bike theft cases, with the ability to - paginate (10 cases per page).
+- [x] I want to see a total number of bike theft cases.
+- [x] For each reported bike theft I want to see:
   - [x] Case title
   - [x] Case description
   - [x] Date of the theft
-  - [ ] Date of when the case was reported (API does not seem to have a reported on field)
+  - [x] Date of when the case was reported
   - [x] Location of the theft
   - [x] Picture of the bike, if available
 - [ ] I want to filter reported bike thefts by partial case title.
 - [ ] I want to filter reported bike thefts by date range.
-- [ ] I want to see a loading state until the list is available.
-- [ ] I want to see an error state if the list is unavailable.
-- [ ] I want to see an empty state if there are no results.
+- [x] I want to see a loading state until the list is available.
+- [x] I want to see an error state if the list is unavailable.
+- [x] I want to see an empty state if there are no results.
 
 ## Your Mission
 

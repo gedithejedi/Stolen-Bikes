@@ -1,17 +1,10 @@
 import Image from "next/image";
-import { IBike } from "types";
+import { Bike } from "types";
 import fallback from "../../../public/img/no-image.png";
+import {Button} from "antd";
+import { unixToDate } from "~/helper";
 
-const Bike = ({ bike }: { bike: IBike }) => {
-  const unixToDate = (unixDate: number) => {
-    const date = new Date(unixDate * 1000);
-    return date.toLocaleDateString("de-DE", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });
-  };
-
+const Bike = ({ bike, setSelectedBikeId }: { bike: Bike, setSelectedBikeId: React.Dispatch<React.SetStateAction<number | null>> }) => {
   return (
     <div className="mb-3 overflow-hidden rounded bg-white p-1 shadow">
       <div className="flex">
@@ -34,12 +27,13 @@ const Bike = ({ bike }: { bike: IBike }) => {
             <span className="font-bold">Stolen on:</span>{" "}
             {bike.date_stolen ? unixToDate(bike.date_stolen) : "N/A"}
           </p>
-          {/* There is no reported on field returned in the API */}
-          {/* <p><span className="font-bold">Reported on:</span> {bike.description ? bike.description : 'N/A'}</p> */}
           <p>
             <span className="font-bold">Description:</span>{" "}
             {bike.description ? bike.description : "N/A"}
           </p>
+          <Button type="link" onClick={() => setSelectedBikeId(bike.id)} className="p-0 cursor-pointer">
+            <span className="no-underline hover:!underline">Read more</span>
+          </Button>
         </div>
       </div>
     </div>

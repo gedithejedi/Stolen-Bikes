@@ -1,7 +1,7 @@
 // Setting up the Types
 // Response type
 export type GetBikeResponse = {
-  bikes?: IBike[];
+  bikes?: Bike[];
   error?: string;
 };
 
@@ -12,7 +12,7 @@ export type GetBikeCountResponse = {
 };
 
 // The bike type
-export type IBike = {
+export type Bike = {
   id: number;
   status: "stolen" | "non" | "proximity" | "all";
   title: string;
@@ -29,20 +29,26 @@ export type IBike = {
   registry_url: string | null;
   serial: string;
   stolen: true;
-  stolen_coordinates: IBikeCoordinates | null;
+  stolen_coordinates: BikeCoordinates | null;
   stolen_location: string | null;
   thumb: string | null;
   url: string;
   year: number;
+  registration_created_at?: number | null,
+	registration_updated_at?: number | null,
 };
 
 // Bike Coordinate type
-export type IBikeCoordinates = {
+export type BikeCoordinates = {
   latitude: number;
   longitude: number;
 };
 
 // Error type
-export type IBikeError = {
+export type BikeError = {
   error: string;
 };
+
+export type GetBikeDataResponse = {
+	bike: Bike;
+}
