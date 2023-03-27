@@ -36,11 +36,16 @@ const Home: NextPage = () => {
   if (isLoading) return <div>Loading..</div>;
   if (isError) return <div>Error</div>;
 
+  console.log(data);
+
   return (
     <>
-      {data.map(bike => (
-        <Bike key={bike.id} bike={bike}/>
-      ))}
+      <h1 className="text-center">Bike Thefts in Munich</h1>
+      <div className="flex flex-col">
+        {data.map(bike => (
+          <Bike key={bike.id} bike={bike}/>
+        ))}
+      </div>
     </>
   );
 };

@@ -13,10 +13,10 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
           name="description"
           content="Track all reported bike thefts in the Munich area"
         />
-        <link rel="icon" href="/polizei-muenchen-logo.svg" />
+        <link rel="icon" href="/img/polizei-muenchen-logo.svg" />
       </Head>
-      <main className="flex min-h-screen flex-col">
-        <div className="container flex flex-col gap-12 px-4 py-16 ">
+      <main className="flex min-h-screen flex-col bg-bgGray">
+        <div className="container">
           {children}
         </div>
       </main>

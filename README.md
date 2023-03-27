@@ -1,6 +1,6 @@
 # Stolen Bike Index - Carly Coding Challenge
 
-![Stolen Bike Cases](./public/illustration.png)
+![Stolen Bike Cases](./public/img/illustration.png)
 
 ## Context
 
@@ -12,16 +12,16 @@ This app needs to display the list of reported bike thefts based on the Bikeinde
 
 As a police officer:
 
-- [ ] I want to see a list of reported bike thefts for the Munich area.
+- [x] I want to see a list of reported bike thefts for the Munich area.
 - [ ] I want to see the first 10 bike theft cases, with the ability to - paginate (10 cases per page).
 - [ ] I want to see a total number of bike theft cases.
 - [ ] For each reported bike theft I want to see:
-  - [ ] Case title
-  - [ ] Case description
-  - [ ] Date of the theft
-  - [ ] Date of when the case was reported
-  - [ ] Location of the theft
-  - [ ] Picture of the bike, if available
+  - [x] Case title
+  - [x] Case description
+  - [x] Date of the theft
+  - [] Date of when the case was reported (API does not seem to have a reported on field)
+  - [x] Location of the theft
+  - [x] Picture of the bike, if available
 - [ ] I want to filter reported bike thefts by partial case title.
 - [ ] I want to filter reported bike thefts by date range.
 - [ ] I want to see a loading state until the list is available.

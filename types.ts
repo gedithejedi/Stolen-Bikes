@@ -20,13 +20,13 @@ export type IBike = {
 	manufacturer_name: string;
 	external_id: number | null;
 	registry_name: string | null;
-	registry_url: URL | null;
+	registry_url: string | null;
 	serial: string;
 	stolen: true;
 	stolen_coordinates: IBikeCoordinates | null;
 	stolen_location: string | null;
-	thumb: URL | null;
-	url: URL;
+	thumb: string | null;
+	url: string;
 	year: number;
 }
 
