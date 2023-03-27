@@ -4,14 +4,14 @@ const config = {
   theme: {
     extend: {
       container: {
-        padding: '20px',
+        padding: "20px",
         center: true,
         screens: {
-          sm: '600px',
-          md: '950px',
-          lg: '950px',
-          xl: '950px',
-          '2xl': '950px',
+          sm: "600px",
+          md: "950px",
+          lg: "950px",
+          xl: "950px",
+          "2xl": "950px",
         },
       },
       colors: {

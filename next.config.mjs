@@ -21,8 +21,8 @@ const config = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'files.bikeindex.org',
+        protocol: "https",
+        hostname: "files.bikeindex.org",
       },
     ],
   },

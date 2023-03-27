@@ -19,7 +19,7 @@ As a police officer:
   - [x] Case title
   - [x] Case description
   - [x] Date of the theft
-  - [] Date of when the case was reported (API does not seem to have a reported on field)
+  - [ ] Date of when the case was reported (API does not seem to have a reported on field)
   - [x] Location of the theft
   - [x] Picture of the bike, if available
 - [ ] I want to filter reported bike thefts by partial case title.

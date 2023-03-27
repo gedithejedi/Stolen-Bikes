@@ -8,17 +8,15 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>{"Bike Theft Tracker"}</title>
+        <title>Polizei München - Bike Theft Tracker</title>
         <meta
           name="description"
           content="Track all reported bike thefts in the Munich area"
         />
         <link rel="icon" href="/img/polizei-muenchen-logo.svg" />
       </Head>
-      <main className="flex min-h-screen flex-col bg-bgGray">
-        <div className="container">
-          {children}
-        </div>
+      <main className="flex min-h-screen flex-col bg-bgGray py-6">
+        <div className="container">{children}</div>
       </main>
     </>
   );
