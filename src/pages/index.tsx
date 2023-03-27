@@ -6,7 +6,7 @@ import BikeContainer from "../components/Bike/Container";
 const Home: NextPage = () => {
   return (
     <>
-      <BikeContainer />
+      <BikeContainer/>
     </>
   );
 };

@@ -2,17 +2,13 @@ import Head from "next/head";
 
 export interface IPrimaryLayout {
   children: React.ReactNode;
-  title?: string
 }
 
-const PrimaryLayout: React.FC<IPrimaryLayout> = ({
-  children, 
-  title 
-}) => {
+const PrimaryLayout: React.FC<IPrimaryLayout> = ({children}) => {
   return (
     <>
       <Head>
-        <title>{title ?? "Bike Theft Tracker"}</title>
+        <title>{"Bike Theft Tracker"}</title>
         <meta
           name="description"
           content="Track all reported bike thefts in the Munich area"
