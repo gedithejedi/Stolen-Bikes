@@ -1,7 +1,7 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 export interface IPrimaryLayout {
-  children: JSX.Element
+  children: React.ReactNode;
   title?: string
 }
 
@@ -11,7 +11,6 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({
 }) => {
   return (
     <>
-
       <Head>
         <title>{title ?? "Bike Theft Tracker"}</title>
         <meta
@@ -20,7 +19,11 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({
         />
         <link rel="icon" href="/polizei-muenchen-logo.svg" />
       </Head>
-      <main className="">{children}</main>
+      <main className="flex min-h-screen flex-col">
+        <div className="container flex flex-col gap-12 px-4 py-16 ">
+          {children}
+        </div>
+      </main>
     </>
   );
 };
