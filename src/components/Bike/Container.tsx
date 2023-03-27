@@ -1,6 +1,10 @@
 import React from "react";
 
-const Container = () => {
+export interface IContainer {
+
+}
+
+const Container: React.FC<IContainer> = () => {
   return <div>Bike Container</div>;
 };
 
