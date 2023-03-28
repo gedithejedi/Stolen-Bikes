@@ -1,4 +1,3 @@
-import { useState } from "react";
 import BikeComponent from "~/components/Bike/Bike";
 import { Empty, Modal } from 'antd';
 import { type Bike as BikeType } from "types";
