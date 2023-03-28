@@ -15,7 +15,7 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
         />
         <link rel="icon" href="/img/polizei-muenchen-logo.svg" />
       </Head>
-      <main className="flex min-h-screen flex-col bg-bgGray py-6">
+      <main className="flex min-h-screen flex-col bg-bgGray py-16">
         <div className="container">{children}</div>
       </main>
     </>
