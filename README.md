@@ -24,8 +24,8 @@ As a police officer:
   - [x] Picture of the bike, if available
 - [x] I want to filter reported bike thefts by partial case title.
 - [ ] I want to filter reported bike thefts by date range.
-    - Did not implement this as the API does not support direct date search. It could
-      be done by getting all of the bikes that match all of the filters and filtering the data in the server.
+  - Did not implement this as the API does not support direct date search. It could
+    be done by getting all of the bikes that match all of the filters and filtering the data in the server.
 - [x] I want to see a loading state until the list is available.
 - [x] I want to see an error state if the list is unavailable.
 - [x] I want to see an empty state if there are no results.

@@ -34,8 +34,8 @@ export type Bike = {
   thumb: string | null;
   url: string;
   year: number;
-  registration_created_at?: number | null,
-	registration_updated_at?: number | null,
+  registration_created_at?: number | null;
+  registration_updated_at?: number | null;
 };
 
 // Bike Coordinate type
@@ -50,5 +50,5 @@ export type BikeError = {
 };
 
 export type GetBikeDataResponse = {
-	bike: Bike;
-}
+  bike: Bike;
+};

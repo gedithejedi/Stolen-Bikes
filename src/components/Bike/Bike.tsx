@@ -1,10 +1,16 @@
 import Image from "next/image";
 import { Bike } from "types";
 import fallback from "../../../public/img/no-image.png";
-import {Button} from "antd";
+import { Button } from "antd";
 import { unixToDate } from "~/helper";
 
-const Bike = ({ bike, setSelectedBikeId }: { bike: Bike, setSelectedBikeId: React.Dispatch<React.SetStateAction<number | null>> }) => {
+const Bike = ({
+  bike,
+  onReadMoreToggle,
+}: {
+  bike: Bike;
+  onReadMoreToggle: (id: number | null) => void;
+}) => {
   return (
     <div className="mb-3 overflow-hidden rounded bg-white p-1 shadow">
       <div className="flex">
@@ -31,7 +37,11 @@ const Bike = ({ bike, setSelectedBikeId }: { bike: Bike, setSelectedBikeId: Reac
             <span className="font-bold">Description:</span>{" "}
             {bike.description ? bike.description : "N/A"}
           </p>
-          <Button type="link" onClick={() => setSelectedBikeId(bike.id)} className="p-0 cursor-pointer">
+          <Button
+            type="link"
+            onClick={() => onReadMoreToggle(bike.id)}
+            className="cursor-pointer p-0"
+          >
             <span className="no-underline hover:!underline">Read more</span>
           </Button>
         </div>
