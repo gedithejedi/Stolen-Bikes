@@ -1,12 +1,13 @@
 import { type NextPage } from "next";
 import {useState} from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Bike from "../components/Bike/Bike";
 import axios from "axios";
 import { unixToDate } from "~/helper";
 import type { GetBikeResponse, GetBikeCountResponse, GetBikeDataResponse } from "types";
-import { Pagination, PaginationProps, Modal} from "antd";
+import { Pagination, PaginationProps, Modal, Input, Button} from "antd";
 import { Empty } from 'antd';
+
 
 const BASE_URL = "https://bikeindex.org:443/api/v3";
 const POSTS_PER_PAGE = 10;
@@ -16,24 +17,29 @@ const LOCATION = "Munich";
 const Home: NextPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedBikeId, setSelectedBikeId] = useState<number | null>(null)
+  const [filterText, setFilterText] = useState<string>("");
 
-  const getAllBikes = async (page:number) => {
+  const getAllBikes = async () => {
     const {data} = await axios.get<GetBikeResponse>(BASE_URL+'/search', {
       // The settings as needed
       params: {
-        page: page,
+        page: currentPage,
         per_page: POSTS_PER_PAGE,
         location: LOCATION,
         stolenness: "proximity",
+        query: filterText
       }
     });
     return data.bikes;
   }
   
   const getBikesCount = async () => {
+    console.log("Called");
     const {data} = await axios.get<GetBikeCountResponse>(BASE_URL+'/search/count', {
       params: {
         location: LOCATION,
+        stolenness: "proximity",
+        query: filterText
       }
     });
     return data;
@@ -47,26 +53,24 @@ const Home: NextPage = () => {
 
   // Query to get the bikes
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["bikes", currentPage],
-    queryFn: () => getAllBikes(currentPage),
+    queryKey: ["bikes", currentPage, filterText],
+    queryFn: () => getAllBikes(),
     keepPreviousData: true,
-    // Check if there are more pages by fetching 1 more Bike
     onError: (error) =>{
       console.error(`Something went wrong with fetching the bikes: ${error}`);
     },
   });
 
-  const { data: count, isLoading: isCountLoading, isError: isCountError } = useQuery({
-    queryKey: ["bikeCount"],
+  const { data: count, isLoading: isCountLoading, isFetching: isCountFetching } = useQuery({
+    queryKey: ["bikeCount", filterText],
     queryFn: getBikesCount,
     keepPreviousData: true,
-    // Check if there are more pages by fetching 1 more Bike
     onError: (error) =>{
       console.error(`Something went wrong with fetching the count: ${error}`);
     },
   });
 
-  const { data: selectedBike, isError:isBikeError, isLoading: isBikeLoading } = useQuery({
+  const { data: selectedBike} = useQuery({
     queryKey: ["bike", selectedBikeId],
     queryFn: () => getBikeById(),
     keepPreviousData: true,
@@ -75,10 +79,13 @@ const Home: NextPage = () => {
     },
   });
 
-  console.log(selectedBike);
-
-  const onPageChange: PaginationProps['onChange'] = (page) => {
+  const onPageChange: PaginationProps['onChange'] = (page:number) => {
     setCurrentPage(page);
+  }
+
+  const onFilterTextChange = (text:string) => {
+    setCurrentPage(1);
+    setFilterText(text);
   }
 
   if (isLoading) return <div>Loading..</div>;
@@ -87,18 +94,21 @@ const Home: NextPage = () => {
   return (
     <>
       <h1 className="text-center uppercase">Bike Thefts in Munich</h1>
+      <div className=" pb-6 flex">
+        <Input placeholder="Filter by text" suffix="🔍" className="p-2 w-1/3" onChange={(e)=> onFilterTextChange(e.target.value)}/>
+      </div>
       <div className="flex flex-col">
         {data.length > 0 ? data.map(bike => (
             <Bike key={bike.id} bike={bike} setSelectedBikeId={setSelectedBikeId}/>
           ))
-          : <Empty className="p-8"/>}
+          : <Empty className="p-8" description="No bikes found"/>}
       </div>
       <div className="w-full flex justify-center">
-        {isCountLoading ? 
-          <p>Loading..</p>
+        {isCountLoading || isCountFetching ? 
+          <p>Loading pagination..</p>
           : (<Pagination
               total={count?.proximity}
-              showTotal={(total) => `Total ${total} items`}
+              showTotal={(total:number) => `Total ${total} items`}
               defaultPageSize={10}
               defaultCurrent={1}
               current={currentPage}
