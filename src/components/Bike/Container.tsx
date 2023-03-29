@@ -57,7 +57,7 @@ const Container = () => {
   const getBikeById = async () => {
     if (selectedBikeId == null) return null;
     const { data } = await axios.get<GetBikeDataResponse>(
-      BASE_URL + "/bikes/" + selectedBikeId
+      BASE_URL + "/bikes/" + selectedBikeId.toString()
     );
     return data.bike;
   };
@@ -68,7 +68,7 @@ const Container = () => {
     queryFn: () => getAllBikes(),
     keepPreviousData: true,
     onError: (error:AxiosError) => {
-      console.error(`Something went wrong with fetching the bikes: ${error}`);
+      console.error(`Something went wrong with fetching the bikes: ${error.message}`);
     },
   });
 
@@ -81,7 +81,7 @@ const Container = () => {
     queryFn: getBikesCount,
     keepPreviousData: true,
     onError: (error:AxiosError) => {
-      console.error(`Something went wrong with fetching the count: ${error}`);
+      console.error(`Something went wrong with fetching the count: ${error.message}`);
     },
   });
 
@@ -90,7 +90,7 @@ const Container = () => {
     queryFn: () => getBikeById(),
     keepPreviousData: true,
     onError: (error:AxiosError) => {
-      console.error(`Something went wrong with fetching the bikes: ${error}`);
+      console.error(`Something went wrong with fetching the bikes: ${error.message}`);
     },
   });
 
