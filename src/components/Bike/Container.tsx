@@ -7,7 +7,7 @@ import {
 } from "antd";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import type {
   GetBikeResponse,
   GetBikeCountResponse,
@@ -67,7 +67,7 @@ const Container = () => {
     queryKey: ["bikes", currentPage, filterText],
     queryFn: () => getAllBikes(),
     keepPreviousData: true,
-    onError: (error) => {
+    onError: (error:AxiosError) => {
       console.error(`Something went wrong with fetching the bikes: ${error}`);
     },
   });
@@ -80,7 +80,7 @@ const Container = () => {
     queryKey: ["bikeCount", filterText],
     queryFn: getBikesCount,
     keepPreviousData: true,
-    onError: (error) => {
+    onError: (error:AxiosError) => {
       console.error(`Something went wrong with fetching the count: ${error}`);
     },
   });
@@ -89,7 +89,7 @@ const Container = () => {
     queryKey: ["bike", selectedBikeId],
     queryFn: () => getBikeById(),
     keepPreviousData: true,
-    onError: (error) => {
+    onError: (error:AxiosError) => {
       console.error(`Something went wrong with fetching the bikes: ${error}`);
     },
   });
