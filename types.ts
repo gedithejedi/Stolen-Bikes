@@ -29,19 +29,13 @@ export type Bike = {
   registry_url: string | null;
   serial: string;
   stolen: true;
-  stolen_coordinates: BikeCoordinates | null;
+  stolen_coordinates: Array<number> | null;
   stolen_location: string | null;
   thumb: string | null;
   url: string;
-  year: number;
+  year: number | null;
   registration_created_at?: number | null;
   registration_updated_at?: number | null;
-};
-
-// Bike Coordinate type
-export type BikeCoordinates = {
-  latitude: number;
-  longitude: number;
 };
 
 // Error type

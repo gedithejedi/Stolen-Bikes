@@ -12,7 +12,7 @@ const Bike = ({
   onReadMoreToggle: (id: number | null) => void;
 }) => {
   return (
-    <div className="mb-3 overflow-hidden rounded bg-white p-1 shadow">
+    <div className="single-bike mb-3 overflow-hidden rounded bg-white p-1 shadow">
       <div className="flex">
         <div className="min-w-72 h-64 w-4/12">
           <Image
@@ -27,15 +27,21 @@ const Bike = ({
           <h2 className="mt-0 text-base">{bike.title}</h2>
           <p>
             <span className="font-bold">Location:</span>{" "}
-            {bike.stolen_location ? bike.stolen_location : "N/A"}
+            <span className="bike-location">
+              {bike.stolen_location ? bike.stolen_location : "N/A"}
+            </span>
           </p>
           <p>
             <span className="font-bold">Stolen on:</span>{" "}
-            {bike.date_stolen ? unixToDate(bike.date_stolen) : "N/A"}
+            <span className="bike-stolen">
+              {bike.date_stolen ? unixToDate(bike.date_stolen) : "N/A"}
+            </span>
           </p>
           <p>
             <span className="font-bold">Description:</span>{" "}
-            {bike.description ? bike.description : "N/A"}
+            <span className="bike-description">
+              {bike.description ? bike.description : ""}
+            </span>
           </p>
           <Button
             type="link"

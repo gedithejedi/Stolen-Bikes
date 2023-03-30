@@ -1,10 +1,4 @@
-import {
-  Pagination,
-  PaginationProps,
-  Input,
-  DatePicker,
-  Tooltip,
-} from "antd";
+import { Pagination, PaginationProps, Input, DatePicker, Tooltip } from "antd";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
@@ -22,7 +16,8 @@ const LOCATION = "Munich";
 //const LOCATION = "North Pole"; // uncomment to get no results
 
 const Container = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1);  const [filterText, setFilterText] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [filterText, setFilterText] = useState<string>("");
   const [selectedBikeId, setSelectedBikeId] = useState<number | null>(null);
 
   const getAllBikes = async () => {
@@ -67,8 +62,10 @@ const Container = () => {
     queryKey: ["bikes", currentPage, filterText],
     queryFn: () => getAllBikes(),
     keepPreviousData: true,
-    onError: (error:AxiosError) => {
-      console.error(`Something went wrong with fetching the bikes: ${error.message}`);
+    onError: (error: AxiosError) => {
+      console.error(
+        `Something went wrong with fetching the bikes: ${error.message}`
+      );
     },
   });
 
@@ -80,8 +77,10 @@ const Container = () => {
     queryKey: ["bikeCount", filterText],
     queryFn: getBikesCount,
     keepPreviousData: true,
-    onError: (error:AxiosError) => {
-      console.error(`Something went wrong with fetching the count: ${error.message}`);
+    onError: (error: AxiosError) => {
+      console.error(
+        `Something went wrong with fetching the count: ${error.message}`
+      );
     },
   });
 
@@ -89,8 +88,10 @@ const Container = () => {
     queryKey: ["bike", selectedBikeId],
     queryFn: () => getBikeById(),
     keepPreviousData: true,
-    onError: (error:AxiosError) => {
-      console.error(`Something went wrong with fetching the bikes: ${error.message}`);
+    onError: (error: AxiosError) => {
+      console.error(
+        `Something went wrong with fetching the bikes: ${error.message}`
+      );
     },
   });
 
@@ -103,9 +104,9 @@ const Container = () => {
     setFilterText(text);
   };
 
-  const onReadMoreToggle = (id:number | null) => {
-    setSelectedBikeId(id)
-  }
+  const onReadMoreToggle = (id: number | null) => {
+    setSelectedBikeId(id);
+  };
 
   if (isLoading) return <div>Loading..</div>;
   if (isError || data === undefined) return <div>Error</div>;
@@ -123,7 +124,12 @@ const Container = () => {
           <RangePicker disabled />
         </Tooltip>
       </div>
-      <List bikes={data} selectedBike={selectedBike} selectedBikeId={selectedBikeId} onReadMoreToggle={onReadMoreToggle} />
+      <List
+        bikes={data}
+        selectedBike={selectedBike}
+        selectedBikeId={selectedBikeId}
+        onReadMoreToggle={onReadMoreToggle}
+      />
       <div className="flex w-full justify-center pt-6">
         {isCountLoading || isCountFetching ? (
           <p>Loading pagination..</p>
